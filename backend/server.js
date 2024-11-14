@@ -6,6 +6,14 @@ const fs = require("fs");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const cors = require('cors');
+app.use(cors({
+    origin: 'https://kiet-webapp.vercel.app',  // Frontend URL
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+}));
+
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
