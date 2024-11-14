@@ -1,0 +1,74 @@
+[
+  {
+    "courseCode": "BCS501",
+    "courseName": "Database Management System",
+    "subjectType": "Theory",
+    "CA_I": "56.00",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "NA",
+    "PCA_II": "NA"
+  },
+  {
+    "courseCode": "BCS502",
+    "courseName": "Web Technology",
+    "subjectType": "Theory",
+    "CA_I": "45.00",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "NA",
+    "PCA_II": "NA"
+  },
+  {
+    "courseCode": "BCS503",
+    "courseName": "Design and Analysis of Algorithm",
+    "subjectType": "Theory",
+    "CA_I": "54.00",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "NA",
+    "PCA_II": "NA"
+  },
+  {
+    "courseCode": "BCS054",
+    "courseName": "Object Oriented System Design with C++",
+    "subjectType": "Theory",
+    "CA_I": "37.00",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "NA",
+    "PCA_II": "NA"
+  },
+  {
+    "courseCode": "BCS055",
+    "courseName": "Machine Learning Techniques",
+    "subjectType": "Theory",
+    "CA_I": "51.00",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "NA",
+    "PCA_II": "NA"
+  },
+  {
+    "courseCode": "BNC501",
+    "courseName": "Constitution of India",
+    "subjectType": "Theory",
+    "CA_I": "52.00",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "NA",
+    "PCA_II": "NA"
+  }
+]

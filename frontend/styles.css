@@ -1,0 +1,263 @@
+/* Basic styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Heading */
+h2 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* ------------------- Attendance Page Styling ------------------- */
+
+/* Table Styling */
+#attendanceTable, #marksTable {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table headers and cells */
+#attendanceTable th, #marksTable th,
+#attendanceTable td, #marksTable td {
+    border: 1px solid #ddd; /* Add border to all cells (vertical separators) */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Table header styling */
+#attendanceTable th, #marksTable th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+/* Zebra striping for rows */
+#attendanceTable tbody tr:nth-child(even),
+#marksTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for table rows */
+#attendanceTable tbody tr:hover,
+#marksTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Total Attendance Styling */
+#totalAttendance {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #4CAF50;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Button Container Styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Button Styling */
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Individual Button Styling */
+#viewMarksBtn {
+    background-color: #4CAF50;
+}
+
+#viewMarksBtn:hover {
+    background-color: #45a049;
+}
+
+#checkOtherDetailsBtn {
+    background-color: #f44336;
+}
+
+#checkOtherDetailsBtn:hover {
+    background-color: #d32f2f;
+}
+
+#backToAttendanceBtn {
+    background-color: #008CBA;
+}
+
+#backToAttendanceBtn:hover {
+    background-color: #007bb5;
+}
+
+/* ------------------- Login Page Styling ------------------- */
+
+body.login-body {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+}
+
+h2.login-header {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#loginForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#loginForm label {
+    font-size: 1em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#loginForm input[type="text"], 
+#loginForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#loginForm input[type="text"]:focus, 
+#loginForm input[type="password"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+#loginForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+#loginForm button:hover {
+    background-color: #45a049;
+}
+
+#errorMessage {
+    color: red;
+    text-align: center;
+    display: none;
+    margin-top: 15px;
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input[type="password"] {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Space for the icon */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #4CAF50;
+    font-size: 1.2em;
+}
+
+/* For the eye icon (show/hide) */
+.password-container i:hover {
+    color: #45a049;
+}
+
+/* Button */
+.login-button {
+    margin-top: 20px;
+}
+
+/* #proceedBtn {
+    background-color: #008CBA;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#proceedBtn:hover {
+    background-color: #005f73;
+} */
+#proceedBtn {
+    background-color: #f39c12;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#proceedBtn:hover {
+    background-color: #e67e22;
+}
+
+#statusMessage {
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+}
+/* ------------------- Common Styling for Buttons ------------------- */
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* ------------------- Additional Styling for Tables ------------------- */
+
+/* Additional column separation */
+#attendanceTable th, #marksTable th,
+#attendanceTable td, #marksTable td {
+    border-right: 1px solid #ddd;
+}
+
+/* Remove right border from last column */
+#attendanceTable th:last-child, #marksTable th:last-child,
+#attendanceTable td:last-child, #marksTable td:last-child {
+    border-right: none;
+}
