@@ -22,6 +22,7 @@ let browser, page;
 
 // Function to launch the browser and log in
 async function launchBrowserAndLogin(username, password) {
+    console.log('Puppeteer executable path:', puppeteer.executablePath());
     const browser = await puppeteer.launch({
         headless: true, // Set headless mode to true for production
         args: [
