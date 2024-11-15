@@ -1,10 +1,13 @@
 const express = require("express");
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Provide a custom path to Chromium installed on Render
+const executablePath = '/usr/bin/google-chrome-stable';
 
 const cors = require('cors');
 app.use(cors({
@@ -24,14 +27,16 @@ let browser, page;
 async function launchBrowserAndLogin(username, password) {
     console.log('Puppeteer executable path:', puppeteer.executablePath());
     const browser = await puppeteer.launch({
-        headless: true, // Set headless mode to true for production
+        executablePath: executablePath, // Use the custom executable path for Chromium
+        headless: true,
         args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--disable-dev-shm-usage', // Fixes issues on certain environments
-          '--disable-gpu',            // Disable GPU for headless environments
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--remote-debugging-port=9222',
         ]
-      });
+    });
     page = await browser.newPage();
 
     const loginUrl = "https://mserp.kiet.edu/Academic/iitmsPFkXjz+EbtRodaXHXaPVt3dlW3oTGB+3i1YZ7alodHeRzGm9eTr2C53AU6tMBXuOXVbvNfePRUcHp4rLz3edhg==?enc=3Q2Y1k5BriJsFcxTY7ebQh0hExMANhAKSl1CmxvOF+Y=";

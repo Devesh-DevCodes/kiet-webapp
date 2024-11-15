@@ -5,8 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
-    },
-  
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,6 +13,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.1",
-    "puppeteer": "^23.8.0"
+    "puppeteer-core": "^23.8.0"
   }
 }
