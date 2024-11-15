@@ -8,7 +8,8 @@ const port = process.env.PORT || 3000;
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'https://kiet-webapp.vercel.app',  // Frontend URL
+    origin: '*',  // Frontend URL
+    // origin: 'https://kiet-webapp.vercel.app',  // Frontend URL
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
 }));
@@ -21,7 +22,7 @@ let browser, page;
 
 // Function to launch the browser and log in
 async function launchBrowserAndLogin(username, password) {
-    browser = await puppeteer.launch({ headless: false });  // Change to false for debugging (CAPTCHA handling)
+    browser = await puppeteer.launch({ headless: true }); // Set to true for headless
     page = await browser.newPage();
 
     const loginUrl = "https://mserp.kiet.edu/Academic/iitmsPFkXjz+EbtRodaXHXaPVt3dlW3oTGB+3i1YZ7alodHeRzGm9eTr2C53AU6tMBXuOXVbvNfePRUcHp4rLz3edhg==?enc=3Q2Y1k5BriJsFcxTY7ebQh0hExMANhAKSl1CmxvOF+Y=";
@@ -34,15 +35,21 @@ async function launchBrowserAndLogin(username, password) {
     // console.log("Please solve the CAPTCHA manually, then press Enter in the console...");
     // await new Promise(resolve => process.stdin.once('data', resolve));
 
-    console.log("Please solve the CAPTCHA manually, wait for 10 sec ...");
-    await new Promise(resolve => setTimeout(resolve, 10000));
-    console.log("Delay finished, resuming...");
+    // console.log("Please solve the CAPTCHA manually, wait for 10 sec ...");
+    // await new Promise(resolve => setTimeout(resolve, 10000));
+    // console.log("Delay finished, resuming...");
 
 
-    await page.click('#btnLogin');
-    await page.waitForNavigation();
+     // Retrieve CAPTCHA value from hidden input and fill it in automatically
+     const captchaValue = await page.$eval('#hdncaptcha', el => el.value);
+     await page.type('#txtcaptcha', captchaValue);  // Fill the CAPTCHA field with the retrieved value
+ 
+     await page.click('#btnLogin');
+     await page.waitForNavigation();
+ 
+     // Do further actions after login if needed
+     console.log("Logged in successfully!");
 
-    console.log("Login successful!");
 }
 
 // Function to fetch attendance data
