@@ -1,79 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login to ERP</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- Include Font Awesome for Eye Icon -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
-<body class="login-body">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="login-body">
     <h2 class="login-header">Login to ERP</h2>
     <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required /><br /><br />
 
-        <label for="password">Password:</label>
-        <div class="password-container">
-            <input type="password" id="password" name="password" required>
-            <i id="togglePassword" class="fa fa-eye" onclick="togglePassword()"></i>
-        </div><br><br>
+      <label for="password">Password:</label>
+      <div class="password-container">
+        <input type="password" id="password" name="password" required />
+        <i id="togglePassword" class="fa fa-eye" onclick="togglePassword()"></i>
+      </div>
+      <br /><br />
 
-        <button type="submit" class="login-button">Login</button>
+      <button type="submit" class="login-button">Login</button>
     </form>
 
-    <div id="errorMessage" style="color:red; display:none;">
-        <p>Error fetching data. Please try again.</p>
+    <div id="errorMessage" style="color: red; display: none">
+      <p>Error fetching data. Please try again.</p>
     </div>
 
     <script>
-        // Function to toggle password visibility
-        function togglePassword() {
-            const passwordInput = document.getElementById("password");
-            const toggleIcon = document.getElementById("togglePassword");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                toggleIcon.classList.remove("fa-eye");
-                toggleIcon.classList.add("fa-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                toggleIcon.classList.remove("fa-eye-slash");
-                toggleIcon.classList.add("fa-eye");
-            }
+      // Function to toggle password visibility
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const toggleIcon = document.getElementById("togglePassword");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleIcon.classList.remove("fa-eye");
+          toggleIcon.classList.add("fa-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          toggleIcon.classList.remove("fa-eye-slash");
+          toggleIcon.classList.add("fa-eye");
         }
+      }
 
-        document.getElementById("loginForm").addEventListener("submit", async function (e) {
-            e.preventDefault();
+      const apiUrl =
+        window.location.hostname === "localhost"
+          ? "http://localhost:3000/api/login" // Local API URL
+          : "https://kiet-webapp.onrender.com/api/login"; // Deployed API URL
 
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
 
-            // Send data to backend
-            try {
-                const response = await fetch("https://kiet-webapp.onrender.com/api/login", {     // /api/login
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ username, password })
-                });
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
 
-                const result = await response.json();
+          // Send data to backend
+          try {
+            const response = await fetch(apiUrl, {
+              // /api/login
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ username, password }),
+            });
 
-                if (result.success) {
-                    // Redirect to attendance page if successful
-                    window.location.href = "/attendance.html";
-                } else {
-                    // Display error message if login or data fetch fails
-                    document.getElementById("errorMessage").style.display = "block";
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                document.getElementById("errorMessage").style.display = "block";
+            const result = await response.json();
+
+            if (result.success) {
+              // Redirect to attendance page if successful
+              window.location.href = "/attendance.html";
+            } else {
+              // Display error message if login or data fetch fails
+              document.getElementById("errorMessage").style.display = "block";
             }
+          } catch (error) {
+            console.error("Error:", error);
+            document.getElementById("errorMessage").style.display = "block";
+          }
         });
     </script>
-</body>
+  </body>
 </html>
