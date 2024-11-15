@@ -1,5 +1,5 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
+const puppeteer = require('puppeteer');
 const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
@@ -22,7 +22,15 @@ let browser, page;
 
 // Function to launch the browser and log in
 async function launchBrowserAndLogin(username, password) {
-    browser = await puppeteer.launch({ headless: true }); // Set to true for headless
+    const browser = await puppeteer.launch({
+        headless: true, // Set headless mode to true for production
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage', // Fixes issues on certain environments
+          '--disable-gpu',            // Disable GPU for headless environments
+        ]
+      });
     page = await browser.newPage();
 
     const loginUrl = "https://mserp.kiet.edu/Academic/iitmsPFkXjz+EbtRodaXHXaPVt3dlW3oTGB+3i1YZ7alodHeRzGm9eTr2C53AU6tMBXuOXVbvNfePRUcHp4rLz3edhg==?enc=3Q2Y1k5BriJsFcxTY7ebQh0hExMANhAKSl1CmxvOF+Y=";
