@@ -29,7 +29,7 @@
     "subjectType": "Theory",
     "CA_I": "54.00",
     "CA_II": "-",
-    "CA_III": "-",
+    "CA_III": "0.00",
     "CA_IV": "-",
     "attendance": "NA",
     "PCA_I": "NA",
@@ -53,7 +53,7 @@
     "subjectType": "Theory",
     "CA_I": "51.00",
     "CA_II": "-",
-    "CA_III": "-",
+    "CA_III": "43.00",
     "CA_IV": "-",
     "attendance": "NA",
     "PCA_I": "NA",
@@ -70,5 +70,53 @@
     "attendance": "NA",
     "PCA_I": "NA",
     "PCA_II": "NA"
+  },
+  {
+    "courseCode": "BCS551",
+    "courseName": "Database Management System Lab",
+    "subjectType": "Practical",
+    "CA_I": "NA",
+    "CA_II": "NA",
+    "CA_III": "NA",
+    "CA_IV": "NA",
+    "attendance": "NA",
+    "PCA_I": "-",
+    "PCA_II": "-"
+  },
+  {
+    "courseCode": "BCS552",
+    "courseName": "Web Technology Lab",
+    "subjectType": "Practical",
+    "CA_I": "NA",
+    "CA_II": "NA",
+    "CA_III": "NA",
+    "CA_IV": "NA",
+    "attendance": "NA",
+    "PCA_I": "-",
+    "PCA_II": "-"
+  },
+  {
+    "courseCode": "BCS553",
+    "courseName": "Design and Analysis of Algorithm Lab",
+    "subjectType": "Practical",
+    "CA_I": "NA",
+    "CA_II": "NA",
+    "CA_III": "NA",
+    "CA_IV": "NA",
+    "attendance": "NA",
+    "PCA_I": "-",
+    "PCA_II": "-"
+  },
+  {
+    "courseCode": "BCS554",
+    "courseName": "Mini Project or Internship Assessment",
+    "subjectType": "Project",
+    "CA_I": "-",
+    "CA_II": "-",
+    "CA_III": "-",
+    "CA_IV": "-",
+    "attendance": "NA",
+    "PCA_I": "-",
+    "PCA_II": "-"
   }
 ]

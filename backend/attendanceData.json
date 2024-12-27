@@ -1,107 +1,120 @@
 [
   {},
   {
-    "courseCode": "BCS501",
-    "courseName": "Database Management System",
-    "subjectType": "Theory",
-    "totalClasses": "23",
-    "totalPresent": "22",
-    "attendancePercentage": "96.09"
-  },
-  {
-    "courseCode": "BCS502",
-    "courseName": "Web Technology",
-    "subjectType": "Theory",
-    "totalClasses": "23",
-    "totalPresent": "22",
-    "attendancePercentage": "95.65"
-  },
-  {
-    "courseCode": "BCS503",
-    "courseName": "Design and Analysis of Algorithm",
-    "subjectType": "Theory",
-    "totalClasses": "32",
-    "totalPresent": "30",
-    "attendancePercentage": "94.06"
-  },
-  {
     "courseCode": "BCS054",
     "courseName": "Object Oriented System Design with C++",
     "subjectType": "Theory",
-    "totalClasses": "22",
-    "totalPresent": "20",
-    "attendancePercentage": "91.36"
+    "totalClasses": "32",
+    "totalPresent": "26",
+    "totalOD": "1",
+    "attendancePercentage": "84.38"
   },
   {
     "courseCode": "BCS055",
     "courseName": "Machine Learning Techniques",
     "subjectType": "Theory",
-    "totalClasses": "27",
-    "totalPresent": "21",
-    "attendancePercentage": "78.15"
+    "totalClasses": "42",
+    "totalPresent": "28",
+    "totalOD": "3",
+    "attendancePercentage": "73.81"
   },
   {
-    "courseCode": "BNC501",
-    "courseName": "Constitution of India",
+    "courseCode": "BCS501",
+    "courseName": "Database Management System",
     "subjectType": "Theory",
-    "totalClasses": "15",
-    "totalPresent": "12",
-    "attendancePercentage": "80.00"
+    "totalClasses": "32",
+    "totalPresent": "29",
+    "totalOD": "3",
+    "attendancePercentage": "100.00"
   },
   {
-    "courseCode": "BCS554",
-    "courseName": "Mini Project or Internship Assessment",
-    "subjectType": "Project",
-    "totalClasses": "9",
-    "totalPresent": "8",
-    "attendancePercentage": "88.89"
+    "courseCode": "BCS502",
+    "courseName": "Web Technology",
+    "subjectType": "Theory",
+    "totalClasses": "34",
+    "totalPresent": "29",
+    "totalOD": "0",
+    "attendancePercentage": "85.29"
+  },
+  {
+    "courseCode": "BCS503",
+    "courseName": "Design and Analysis of Algorithm",
+    "subjectType": "Theory",
+    "totalClasses": "46",
+    "totalPresent": "43",
+    "totalOD": "1",
+    "attendancePercentage": "95.65"
   },
   {
     "courseCode": "BCS551",
     "courseName": "Database Management System Lab",
     "subjectType": "Practical",
-    "totalClasses": "16",
-    "totalPresent": "16",
+    "totalClasses": "22",
+    "totalPresent": "20",
+    "totalOD": "2",
     "attendancePercentage": "100.00"
   },
   {
     "courseCode": "BCS552",
     "courseName": "Web Technology Lab",
     "subjectType": "Practical",
-    "totalClasses": "18",
-    "totalPresent": "18",
-    "attendancePercentage": "100.00"
+    "totalClasses": "26",
+    "totalPresent": "24",
+    "totalOD": "0",
+    "attendancePercentage": "92.31"
   },
   {
     "courseCode": "BCS553",
     "courseName": "Design and Analysis of Algorithm Lab",
     "subjectType": "Practical",
-    "totalClasses": "14",
-    "totalPresent": "14",
-    "attendancePercentage": "100.00"
+    "totalClasses": "22",
+    "totalPresent": "18",
+    "totalOD": "0",
+    "attendancePercentage": "81.82"
   },
   {
-    "courseCode": "IT2024CP5",
-    "courseName": "Competitive Programming with DAA + DS",
-    "subjectType": "Practical",
-    "totalClasses": "8",
-    "totalPresent": "7",
-    "attendancePercentage": "87.50"
+    "courseCode": "BCS554",
+    "courseName": "Mini Project or Internship Assessment",
+    "subjectType": "Project",
+    "totalClasses": "11",
+    "totalPresent": "10",
+    "totalOD": "0",
+    "attendancePercentage": "90.91"
+  },
+  {
+    "courseCode": "BNC501",
+    "courseName": "Constitution of India",
+    "subjectType": "Theory",
+    "totalClasses": "22",
+    "totalPresent": "16",
+    "totalOD": "0",
+    "attendancePercentage": "72.73"
   },
   {
     "courseCode": "IT2024APT5",
     "courseName": "Aptitude",
     "subjectType": "Theory",
-    "totalClasses": "16",
-    "totalPresent": "16",
-    "attendancePercentage": "100.00"
+    "totalClasses": "24",
+    "totalPresent": "22",
+    "totalOD": "0",
+    "attendancePercentage": "91.67"
+  },
+  {
+    "courseCode": "IT2024CP5",
+    "courseName": "Competitive Programming with DAA + DS",
+    "subjectType": "Practical",
+    "totalClasses": "10",
+    "totalPresent": "7",
+    "totalOD": "0",
+    "attendancePercentage": "70.00"
   },
   {
     "courseCode": "IT2024SS5",
     "courseName": "Soft Skills",
     "subjectType": "Practical",
-    "totalClasses": "16",
+    "totalClasses": "24",
     "totalPresent": "7",
-    "attendancePercentage": "45.00"
+    "totalOD": "4",
+    "attendancePercentage": "45.83"
   }
 ]

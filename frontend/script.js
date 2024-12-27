@@ -50,24 +50,35 @@
     function calculateTotalAttendance(attendanceData) {
         let totalClasses = 0;
         let totalPresent = 0;
+        let totalOD = 0;
         
         attendanceData.forEach(course => {
             const classes = parseInt(course.totalClasses);
             const present = parseInt(course.totalPresent);
+            const od = parseInt(course.totalOD);
     
             // Accumulate total classes and total present values
             if (!isNaN(classes) && !isNaN(present)) {
                 totalClasses += classes;
                 totalPresent += present;
+                totalOD += od;
             }
         });
     
         // Calculate total attendance percentage
         const totalAttendancePercentage = (totalPresent / totalClasses) * 100;
+        const finalAttendancePercentage = ((totalPresent+totalOD) / totalClasses) * 100;
     
         // Display total attendance in the "totalAttendance" element
-        document.getElementById('totalAttendance').textContent = 
-            `Total Attendance: ${totalAttendancePercentage.toFixed(2)}%`;
+        document.getElementById('totalAttendance').innerHTML = 
+            `
+            Total Present: ${totalPresent}<hr style="border: .7px solid; width: 12%; margin:0 auto">
+            Total Classes: ${totalClasses}<br><hr style="border: 1px dotted ; width: 15%; margin-bottom: 0px"><hr style="border: 1px dotted; width: 15%; margin-top: 2px">
+            Total Attendance: ${totalAttendancePercentage.toFixed(2)}% <br>
+            Total OD: ${totalOD}<hr style="border: 1px dotted ; width: 15%; margin-bottom: 0px"><hr style="border: 1px dotted; width: 15%; margin-top: 2px">
+            Final Attendance: ${finalAttendancePercentage.toFixed(2)}% <br>
+            
+            `;
     }
     
 

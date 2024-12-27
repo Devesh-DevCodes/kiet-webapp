@@ -1,6 +1,6 @@
 const express = require("express");
-// const puppeteer = require('puppeteer');
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
+const chromium = require("chrome-aws-lambda");
 const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
@@ -25,17 +25,29 @@ let browser, page;
 // Function to launch the browser and log in
 async function launchBrowserAndLogin(username, password) {
   try {
-    browser = await puppeteer.launch({
-      executablePath:
-        process.env.CHROME_EXEC_PATH || "/usr/bin/google-chrome-stable",
-      headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu",
-      ],
-    });
+    // Detect environment
+    const isRender = process.env.NODE_ENV === "production";
+
+    // Launch browser based on environment
+    browser = await (isRender
+      ? chromium.puppeteer.launch({
+          args: chromium.args,
+          executablePath: await chromium.executablePath, // Render uses AWS Lambda binary
+          headless: true,
+          defaultViewport: chromium.defaultViewport,
+        })
+      : puppeteer.launch({
+          executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // macOS path
+          headless: true,
+          args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu",
+          ],
+        })
+    );
+
     page = await browser.newPage();
 
     const loginUrl =
@@ -45,14 +57,6 @@ async function launchBrowserAndLogin(username, password) {
     await page.type("#txt_username", username);
     await page.type("#txt_password", password);
 
-    // Manually solve CAPTCHA
-    // console.log("Please solve the CAPTCHA manually, then press Enter in the console...");
-    // await new Promise(resolve => process.stdin.once('data', resolve));
-
-    // console.log("Please solve the CAPTCHA manually, wait for 10 sec ...");
-    // await new Promise(resolve => setTimeout(resolve, 10000));
-    // console.log("Delay finished, resuming...");
-
     // Retrieve CAPTCHA value from hidden input and fill it in automatically
     const captchaValue = await page.$eval("#hdncaptcha", (el) => el.value);
     await page.type("#txtcaptcha", captchaValue); // Fill the CAPTCHA field with the retrieved value
@@ -60,7 +64,6 @@ async function launchBrowserAndLogin(username, password) {
     await page.click("#btnLogin");
     await page.waitForNavigation();
 
-    // Do further actions after login if needed
     console.log("Logged in successfully!");
   } catch (error) {
     console.error("Error during login: ", error);
@@ -86,12 +89,18 @@ async function fetchAttendanceData() {
         subjectType: columns[2]?.innerText.trim(),
         totalClasses: columns[3]?.innerText.trim(),
         totalPresent: columns[4]?.innerText.trim(),
-        attendancePercentage: columns[5]?.innerText.trim(),
+        totalOD: columns[5]?.innerText.trim(),
+        attendancePercentage: columns[6]?.innerText.trim(),
       };
     });
   });
 
-  console.log("fetched attendance ");
+  console.log("fetched attendance");
+  // Store data in-memory for production (Render)
+  if (process.env.NODE_ENV === "production") {
+    return attendanceData;
+  }
+  // Store data in file system for local development
   fs.writeFileSync(
     "attendanceData.json",
     JSON.stringify(attendanceData, null, 2)
@@ -126,6 +135,11 @@ async function fetchMarksData() {
   });
 
   console.log("fetched marks");
+  // Store data in-memory for production (Render)
+  if (process.env.NODE_ENV === "production") {
+    return marksData;
+  }
+  // Store data in file system for local development
   fs.writeFileSync("marksData.json", JSON.stringify(marksData, null, 2));
   return marksData;
 }
@@ -171,40 +185,39 @@ app.get("/", (req, res) => {
 
 // Serve attendance data as JSON
 app.get("/api/attendance", (req, res) => {
-  fs.readFile("attendanceData.json", "utf8", (err, data) => {
-    if (err) {
-      res
-        .status(500)
-        .json({ success: false, message: "Error reading attendance data" });
-    } else {
-      res.json({ success: true, attendanceData: JSON.parse(data) });
-    }
-  });
+  if (process.env.NODE_ENV === "production") {
+    res.json({ success: true, attendanceData });
+  } else {
+    fs.readFile("attendanceData.json", "utf8", (err, data) => {
+      if (err) {
+        res
+          .status(500)
+          .json({ success: false, message: "Error reading attendance data" });
+      } else {
+        res.json({ success: true, attendanceData: JSON.parse(data) });
+      }
+    });
+  }
 });
 
 // Serve marks data as JSON
 app.get("/api/marks", (req, res) => {
-  fs.readFile("marksData.json", "utf8", (err, data) => {
-    if (err) {
-      res
-        .status(500)
-        .json({ success: false, message: "Error reading marks data" });
-    } else {
-      res.json({ success: true, marksData: JSON.parse(data) });
-    }
-  });
-});
-
-// Serve attendance page (you may need to create this page)
-app.get("/attendance.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "attendance.html"));
-});
-
-// Serve marks page (you may need to create this page)
-app.get("/marks.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "marks.html"));
+  if (process.env.NODE_ENV === "production") {
+    res.json({ success: true, marksData });
+  } else {
+    fs.readFile("marksData.json", "utf8", (err, data) => {
+      if (err) {
+        res
+          .status(500)
+          .json({ success: false, message: "Error reading marks data" });
+      } else {
+        res.json({ success: true, marksData: JSON.parse(data) });
+      }
+    });
+  }
 });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });

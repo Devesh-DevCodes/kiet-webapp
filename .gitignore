@@ -25,3 +25,5 @@ yarn-error.log
 # Dependencies
 package-lock.json
 yarn.lock
+
+txt.html
