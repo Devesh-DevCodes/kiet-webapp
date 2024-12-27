@@ -35,6 +35,7 @@ async function launchBrowserAndLogin(username, password) {
           executablePath: await chromium.executablePath, // Render uses AWS Lambda binary
           headless: true,
           defaultViewport: chromium.defaultViewport,
+
         })
       : puppeteer.launch({
           executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // macOS path
@@ -47,6 +48,8 @@ async function launchBrowserAndLogin(username, password) {
           ],
         })
     );
+    console.log("Chromium executable path:", await chromium.executablePath);
+
 
     page = await browser.newPage();
 
