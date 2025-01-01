@@ -48,7 +48,7 @@ async function launchBrowserAndLogin(username, password) {
           ],
         })
     );
-    console.log("Chromium executable path:", await chromium.executablePath);
+    // console.log("Chromium executable path:", await chromium.executablePath);
 
 
     page = await browser.newPage();
@@ -126,9 +126,9 @@ async function fetchMarksData() {
         courseCode: columns[0]?.innerText.trim(),
         courseName: columns[1]?.innerText.trim(),
         subjectType: columns[2]?.innerText.trim(),
-        CA_I: columns[3]?.innerText.trim(),
+        CT: columns[3]?.innerText.trim(),
+        PUE: columns[5]?.innerText.trim(),
         CA_II: columns[4]?.innerText.trim(),
-        CA_III: columns[5]?.innerText.trim(),
         CA_IV: columns[6]?.innerText.trim(),
         attendance: columns[7]?.innerText.trim(),
         PCA_I: columns[8]?.innerText.trim(),

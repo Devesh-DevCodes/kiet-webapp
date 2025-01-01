@@ -26,4 +26,9 @@ yarn-error.log
 package-lock.json
 yarn.lock
 
+# json files
+backend/marksData.json
+backend/attendanceData.json
+
 txt.html
+.codegpt
